@@ -46,28 +46,27 @@ class Game < ActiveRecord::Base
   # Gets the next player
   # @return [String] The next player
   def next_player
-    # TODO
-
+    self.current_player == 'blue' ? 'red' : 'blue'
   end
 
   # setNextPlayer sets the next player
   #
   # @return [String] The new player
   def set_next_player
-    # TODO
-
+    self.current_player = self.next_player
   end
 
   # returns the piece at the coordinates
   def board_position(coords)
-    # TODO
-
+    raise ArgumentError if !coords_valid?(coords)
+    self.board[coords[0]][coords[1]]
   end
 
   # checks that the given coordinates are within the valid range
   def coords_valid?(coords)
-    # TODO
-
+    x = coords[0]
+    y = coords[1]
+    x >= 0 && x <= NUM_COLUMNS - 1 && y >= 0 && y <= NUM_ROWS - 1
   end
 
   # MakeMove takes a column and player and updates the board to reflect the
