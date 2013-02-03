@@ -52,6 +52,22 @@ module Game::BoardMixin
     [coords[0]+i, coords[1]]
   end
 
+ # first class function version of a method with the same name
+  def diagonal_proc
+    return Proc.new{|coords, i| [coords[0]+i, coords[1]+i]}
+  end
+
+  # first class function version of the horizontal method
+  def vertical_proc
+    return Proc.new{|coords, i| [coords[0], coords[1]+i]}
+  end
+  
+  # first class function version of the horizontal method
+  def horizontal_proc
+    return Proc.new{|coords, i| [coords[0]+i, coords[1]]}
+  end
+
+
   # Prints the board in a human-readable format
   #
   # @return [String] Human-readable board
