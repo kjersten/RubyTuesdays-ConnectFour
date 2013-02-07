@@ -90,10 +90,12 @@ class Game < ActiveRecord::Base
 
   # Checks if there is a winner and returns the player if it exists
   #
-  # @return [String] 'red', 'blue', 'tie', 'draw', or 'in_progress'
+  # @return [String] 'red', 'blue', 'tie', or 'in_progress'
   def check_for_winner
     time_it("check all coordinates") {self.status = check_all_for_winner}
     time_it("check the min set of coordinates") {check_min_set_for_winner}
+    # self.status = check_all_for_winner
+    # check_min_set_for_winner
     self.status
   end
 
