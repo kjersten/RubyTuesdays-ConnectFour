@@ -35,7 +35,7 @@ class GamesController < ApplicationController
   def create
     @game = Game.new params[:game]
     if @game.save
-      redirect_to @game, :status => '201'
+      redirect_to @game, :notice => "Game created!"
     else 
       render :action => 'new'
     end
@@ -48,7 +48,7 @@ class GamesController < ApplicationController
   def destroy
     @game = Game.find params[:id]
     @game.destroy
-    redirect_to :action => 'index', :notice => 'Game deleted!', :status => '200'
+    redirect_to(games_path, :notice => 'Game deleted!')
   end
 
 
