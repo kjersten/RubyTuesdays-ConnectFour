@@ -74,10 +74,6 @@ describe GamesController do
       Game.count.should == (@game_count + 1)
     end
 
-    it 'should status 201 if resource created' do
-      response.status.should == 201
-    end
-
   end
 
   describe 'DELETE /games/:id (games#destroy)' do
@@ -87,12 +83,12 @@ describe GamesController do
         delete :destroy, :id => @game_id
       end
 
-      it 'should destroy the object' do
-        Game.exists?(@game_id).should be_false
+      it 'should redirect to the games index' do
+        response.should redirect_to games_path
       end
 
-      it 'should return 200 if deletion successful' do
-        response.status.should == 200
+      it 'should destroy the object' do
+        Game.exists?(@game_id).should be_false
       end
     end
 
