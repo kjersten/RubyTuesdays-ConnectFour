@@ -106,13 +106,17 @@ describe GamesController do
 
   describe 'POST /games/:id/move (games#move)' do
     describe 'with valid params' do
+
+      let(:column) {(0...Game::NUM_COLUMNS).to_a.sample}
+      let(:player) {['red', 'blue'].sample}
+      let(:game) {FactoryGirl.create(:game)}
+
       before(:each) do
-        @game = FactoryGirl.create(:game)
-        Game.stub(:find, @game.id).and_return(@game)
-        @game.should_receive(:make_move).and_return(true)
-        post :move, :id => @game.id,
-                    :player => ['red', 'blue'].sample,
-                    :column => (0...Game::NUM_COLUMNS)
+        Game.stub(:find, game.id).and_return(game)
+        game.should_receive(:make_move).and_return(true)
+        post :move, :id => game.id,
+                    :player => player,
+                    :column => column
       end
 
       it 'should call #make_move' do end
