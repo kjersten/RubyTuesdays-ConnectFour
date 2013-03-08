@@ -7,7 +7,6 @@ end
 FactoryGirl.define do 
   factory :game, :class => Game do 
     board { generate :empty_board }
-    name "default"
     red_player_name "red"
     blue_player_name "blue"
   end
