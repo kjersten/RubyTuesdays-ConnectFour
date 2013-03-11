@@ -2,9 +2,9 @@ source 'https://rubygems.org'
 
 gem 'rails', '~> 3.2.11'
 
-# SQLite
-# Interface with an SQLite database.
-gem 'sqlite3'
+# PostgreSQL
+# Interface with a PostgreSQL database.
+gem 'pg'
 
 # jquery is a JavaScript library
 #   read more at: http://jquery.com/
