@@ -50,3 +50,7 @@ gem 'simplecov', '>= 0.4.0', :require => false, :group => :test
 #   https://github.com/thoughtbot/factory_girl
 # A framework to auto-create
 gem 'factory_girl_rails'
+
+group :assets do
+  gem 'uglifier', '>=  1.0'
+end

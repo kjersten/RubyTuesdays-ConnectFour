@@ -58,5 +58,11 @@ module ConnectFourWWC
 
     # Version of your assets, change this if you want to expire all your assets
     config.assets.version = '1.0'
+
+    # It is easiest to precompile assets before deployment to Heroku.  When precompiling assets, 
+    # Rails initializes the app and attempts to connect to the prod database.  Heroku doesn't require
+    # prod configuration information so it isn't in database.yml.  This means an error is thrown when
+    # precompiling.  I am turning off initialize_on_precompile to get rid of the error (and b/c it is not necessary) 
+    config.assets.initialize_on_precompile = false
   end
 end
