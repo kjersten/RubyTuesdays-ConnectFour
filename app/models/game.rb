@@ -53,20 +53,19 @@ class Game < ActiveRecord::Base
   #
   # @return [String] The new player
   def set_next_player
-    self.current_player = self.next_player
+    self.current_player = next_player
   end
 
   # returns the piece at the coordinates
   def board_position(coords)
-    raise ArgumentError unless coords_valid?(coords)
+    raise(ArgumentError, "Coords (#{col}, #{row}) are out of bounds.") unless coords_valid?(coords)
     self.board[coords[0]][coords[1]]
   end
 
   # checks that the given coordinates are within the valid range
   def coords_valid?(coords)
-    x = coords[0]
-    y = coords[1]
-    0 <= x && x <= NUM_COLUMNS - 1 && 0 <= y && y <= NUM_ROWS - 1
+    col, row = coords
+    (0...NUM_COLUMNS).cover?(col) && (0...NUM_ROWS).cover?(row)
   end
 
   # MakeMove takes a column and player and updates the board to reflect the
