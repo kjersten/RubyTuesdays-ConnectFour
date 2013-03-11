@@ -22,7 +22,6 @@
         %td= game.next_player
         %td=l game.created_at
         %td
-          = link_to t('.edit', :default => t("helpers.links.edit")), edit_game_path(game), :class => 'btn btn-mini'
           = link_to t('.destroy', :default => t("helpers.links.destroy")), game_path(game), :method => :delete, :confirm => 'Are you sure?', :class => 'btn btn-mini btn-danger'
 
 
